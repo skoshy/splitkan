@@ -8,70 +8,91 @@
 
 import React from 'react';
 import {
+  TextInput,
+  Text,
   ScrollView,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { Button, ButtonText } from '../components/Button';
 import { BackgroundView, PostContainer } from '../components/Core/Containers';
 import { SectionHeader } from '../components/Core/Text';
 import { stateMapper, actionsMapper, nameSpaces } from '../handlers';
+import { timer } from 'rxjs';
 
-const ThisComponent = ({ $state }) => {
-  const pinnedPosts = [];
-  const regularPosts = [];
+class ThisComponent extends React.Component {
+  constructor(props) {
+    super(props);
 
-  $state.posts.forEach((post) => {
-    if (post.Pinned) {
-      pinnedPosts.push(<PostContainer key={post.Id} horizontal post={post} />);
-    } else {
-      regularPosts.push(<PostContainer key={post.Id} post={post} />);
-    }
-  });
+    this.state = {
+      items: [],
+      payers: [],
+    };
+  }
 
-  return (
-    <BackgroundView>
-      <View style={{ flex: 1 }}>
-        <SectionHeader>
-          PINNED POSTS
-        </SectionHeader>
-        <ScrollView
-          horizontal
-          style={{
-            flex: 1,
-            marginRight: 0,
-            marginTop: 10,
-            paddingBottom: 10,
-          }}
-        >
-          { pinnedPosts }
-        </ScrollView>
+  addItem = () => {
+    const { items } = this.state;
+    items.push({
+      id: Math.random()+Date.now(),
+      name: 'New ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew Item',
+    });
+    this.setState({ items });
+  }
+
+  renderItems = () => {
+    const { items } = this.state;
+    const itemsJsx = [];
+
+    items.forEach((item) => {
+      itemsJsx.push((
         <View
+          key={item.id}
           style={{
-            flex: 0,
-            height: 1,
-            backgroundColor: `#ccc`,
-            marginTop: 5,
-            marginBottom: 5,
-          }}
-        />
-        <SectionHeader>
-          COMMUNITY POSTS
-        </SectionHeader>
-        <ScrollView
-          style={{
-            flex: 1,
-            flexGrow: 3,
-            marginLeft: 18,
-            marginRight: 18,
-            marginTop: 10,
-            marginBottom: 10,
+
           }}
         >
-          {regularPosts}
-        </ScrollView>
-      </View>
-    </BackgroundView>
-  );
+          <Text>{item.name}</Text>
+        </View>
+      ));
+    });
+
+    return itemsJsx;
+  }
+
+  render = () => {
+    return (
+      <BackgroundView>
+        <View style={{ flex: 1 }}>
+          <ScrollView
+            contentContainerStyle={{
+            }}
+            style={{
+              flex: 1,
+              backgroundColor: 'green',
+            }}
+          >
+            <ScrollView
+              horizontal={true}
+              directionalLockEnabled={false}
+              contentContainerStyle={{
+                flexDirection: 'column',
+              }}
+              style={{
+                flex: 1,
+                backgroundColor: 'blue',
+              }}
+            >
+              <Button onPress={this.addItem}>
+                <ButtonText>Insert item</ButtonText>
+              </Button>
+              {this.renderItems()}
+            </ScrollView>
+          </ScrollView>
+        </View>
+      </BackgroundView>
+    );
+  }
 };
 
 export default connect(

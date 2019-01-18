@@ -30,8 +30,8 @@ export const themes = new function () {
     this.textColor = colors.WHITE;
 
     this.button = new function () {
-      this.background = colors.WHITE;
-      this.text = colors.BLACK;
+      this.background = colors.BLACK;
+      this.text = colors.WHITE;
     };
 
     this.drawerBackgroundColor = this.backgroundColor;
