@@ -3,6 +3,7 @@ const port = require(`../package.json`).defaultDebugPort;
 // ------------------------------------------
 
 const os = require(`os`);
+const fs = require(`fs`);
 const spawn = require(`cross-spawn`);
 const argv = require(`minimist`)(process.argv.slice(2));
 const devLog = (...toLog) => { console.log(...toLog); }; // eslint-disable-line no-console
@@ -16,6 +17,8 @@ argv._.forEach((cmdParam) => {
   switch (cmdParam) {
     case `android`:
       runPlatform = `android`;
+      devLog(`\x1b[33m\nSetting proper permissions on 'gradlew'\n\x1b[0m`);
+      fs.chmodSync(__dirname+'/../android/gradlew', 0755);
       break;
     case `ios`:
       runPlatform = `ios`;
