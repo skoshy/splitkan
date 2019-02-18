@@ -56,6 +56,13 @@
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
 		<string>AntDesign.ttf</string>
+		<string>Manrope Bold.otf</string>
+		<string>Manrope ExtraBold.otf</string>
+		<string>Manrope Light.otf</string>
+		<string>Manrope Medium.otf</string>
+		<string>Manrope Regular.otf</string>
+		<string>Manrope Semibold.otf</string>
+		<string>Manrope Thin.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

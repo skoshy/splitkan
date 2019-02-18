@@ -18,6 +18,7 @@ import { connect } from 'react-redux';
 import { Button, ButtonText } from '../components/Button';
 import { BackgroundView, PostContainer } from '../components/Core/Containers';
 import { SectionHeader } from '../components/Core/Text';
+import { getFontStyle } from '../helpers/font';
 import { stateMapper, actionsMapper, nameSpaces } from '../handlers';
 import { timer } from 'rxjs';
 
@@ -86,6 +87,15 @@ class ThisComponent extends React.Component {
               <Button onPress={this.addItem}>
                 <ButtonText>Insert item</ButtonText>
               </Button>
+              <Text
+                style={{
+                  ...getFontStyle(`Default`),
+                  color: 'white',
+                  fontSize: 20,
+                }}
+              >
+                Hi there this is my text
+              </Text>
               {this.renderItems()}
             </ScrollView>
           </ScrollView>
