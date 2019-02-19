@@ -2,10 +2,12 @@ import React from 'react';
 import {
   createDrawerNavigator,
   createStackNavigator,
+  createMaterialTopTabNavigator,
 } from 'react-navigation';
 import { withNavigationRedux } from './withNavigationRedux';
 import CustomDrawerContentComponent from './CustomDrawerContent';
 import HomeScreen from '../screens/HomeScreen';
+import SplitScreen from '../screens/SplitScreen';
 import PostScreen from '../screens/PostScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import {
@@ -14,10 +16,10 @@ import {
   HeaderButton,
 } from './helpers';
 
-export const Stack = createStackNavigator(
+const SplitStack = createMaterialTopTabNavigator(
   {
-    HomeScreen: {
-      screen: withNavigationRedux(HomeScreen),
+    SplitScreen: {
+      screen: withNavigationRedux(SplitScreen),
       navigationOptions: ({ navigation }) => {
         const { theme } = getNavOptionsVars(navigation);
 
@@ -40,23 +42,65 @@ export const Stack = createStackNavigator(
         };
       },
     },
-    PostScreen: {
-      screen: withNavigationRedux(PostScreen),
+    SplitScreen2: {
+      screen: withNavigationRedux(SplitScreen),
       navigationOptions: ({ navigation }) => {
         const { theme } = getNavOptionsVars(navigation);
 
         return {
-          title: `Post`,
+          title: `Home`,
           headerLeft: (
             <HeaderButton
               theme={theme}
-              onPress={() => { navigation.goBack(); }}
-              icon="arrow-left"
+              onPress={() => { navigation.openDrawer(); }}
+              icon="bars"
+            />
+          ),
+          headerRight: (
+            <HeaderButton
+              theme={theme}
+              onPress={() => { navigation.navigate(`SettingsScreen`); }}
+              icon="cog"
             />
           ),
         };
       },
     },
+  },
+  {
+    ...defaultNavigatorOptions,
+    headerMode: `none`,
+    navigationOptions: ({ navigation }) => {
+      const { defaultHeaderStyles } = getNavOptionsVars(navigation);
+
+      return {
+        ...defaultHeaderStyles,
+      };
+    },
+  },
+);
+
+export const Stack = createStackNavigator(
+  {
+    // SplitScreen: SplitStack,
+    HomeScreen: HomeScreen,
+    // PostScreen: {
+    //   screen: withNavigationRedux(PostScreen),
+    //   navigationOptions: ({ navigation }) => {
+    //     const { theme } = getNavOptionsVars(navigation);
+
+    //     return {
+    //       title: `Post`,
+    //       headerLeft: (
+    //         <HeaderButton
+    //           theme={theme}
+    //           onPress={() => { navigation.goBack(); }}
+    //           icon="arrow-left"
+    //         />
+    //       ),
+    //     };
+    //   },
+    // },
   },
   {
     ...defaultNavigatorOptions,
