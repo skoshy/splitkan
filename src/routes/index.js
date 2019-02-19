@@ -15,6 +15,7 @@ import {
   getNavOptionsVars,
   HeaderButton,
 } from './helpers';
+import { BodyText } from '../components/Core/Text';
 
 const SplitStack = createMaterialTopTabNavigator(
   {
@@ -83,29 +84,35 @@ const SplitStack = createMaterialTopTabNavigator(
 export const Stack = createStackNavigator(
   {
     // SplitScreen: SplitStack,
-    HomeScreen: HomeScreen,
-    // PostScreen: {
-    //   screen: withNavigationRedux(PostScreen),
-    //   navigationOptions: ({ navigation }) => {
-    //     const { theme } = getNavOptionsVars(navigation);
+    HomeScreen: {
+      screen: withNavigationRedux(HomeScreen),
+      navigationOptions: ({ navigation }) => {
+        const { theme, defaultHeaderStyles } = getNavOptionsVars(navigation);
 
-    //     return {
-    //       title: `Post`,
-    //       headerLeft: (
-    //         <HeaderButton
-    //           theme={theme}
-    //           onPress={() => { navigation.goBack(); }}
-    //           icon="arrow-left"
-    //         />
-    //       ),
-    //     };
-    //   },
-    // },
+        return {
+          title: `Post`,
+          // headerTitle: ({ children }) => (
+          //   <BodyText>
+          //     {children}
+          //   </BodyText>
+          // ),
+          headerLeft: (
+            <HeaderButton
+              theme={theme}
+              onPress={() => { navigation.goBack(); }}
+              icon="arrow-left"
+            />
+          ),
+        };
+      },
+    },
   },
   {
     ...defaultNavigatorOptions,
     navigationOptions: ({ navigation }) => {
       const { defaultHeaderStyles } = getNavOptionsVars(navigation);
+
+      console.log(defaultHeaderStyles);
 
       return {
         ...defaultHeaderStyles,
@@ -120,48 +127,47 @@ export const LoggedInRoute = createDrawerNavigator(
   },
   {
     ...defaultNavigatorOptions,
-    initialRouteName: `Main`,
     contentComponent: CustomDrawerContentComponent,
   },
 );
 
-export const SettingsRoute = createStackNavigator(
-  {
-    SettingsScreen: {
-      screen: withNavigationRedux(SettingsScreen),
-      navigationOptions: ({ navigation }) => {
-        const { theme } = getNavOptionsVars(navigation);
+// export const SettingsRoute = createStackNavigator(
+//   {
+//     SettingsScreen: {
+//       screen: withNavigationRedux(SettingsScreen),
+//       navigationOptions: ({ navigation }) => {
+//         const { theme } = getNavOptionsVars(navigation);
 
-        return {
-          headerRight: (
-            <HeaderButton
-              theme={theme}
-              onPress={() => { navigation.dismiss(); }}
-              icon="times"
-            />
-          ),
-        };
-      },
-    },
-  },
-  {
-    ...defaultNavigatorOptions,
-    navigationOptions: ({ navigation }) => {
-      const { defaultHeaderStyles } = getNavOptionsVars(navigation);
+//         return {
+//           headerRight: (
+//             <HeaderButton
+//               theme={theme}
+//               onPress={() => { navigation.dismiss(); }}
+//               icon="times"
+//             />
+//           ),
+//         };
+//       },
+//     },
+//   },
+//   {
+//     ...defaultNavigatorOptions,
+//     navigationOptions: ({ navigation }) => {
+//       const { defaultHeaderStyles } = getNavOptionsVars(navigation);
 
-      return {
-        ...defaultHeaderStyles,
-        title: `Settings`,
-      };
-    },
-  },
-);
+//       return {
+//         ...defaultHeaderStyles,
+//         title: `Settings`,
+//       };
+//     },
+//   },
+// );
 
 
 export const DefaultRoute = createStackNavigator(
   {
     Main: LoggedInRoute,
-    SettingsScreen: SettingsRoute,
+    // SettingsScreen: SettingsRoute,
   },
   {
     ...defaultNavigatorOptions,

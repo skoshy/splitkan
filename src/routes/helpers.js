@@ -3,6 +3,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { getFontStyle } from '../helpers/font';
 
 export const ICON_SIZE = 20;
 export const defaultNavigatorOptions = {
@@ -13,13 +14,16 @@ export const defaultNavigatorOptions = {
 export const getNavOptionsVars = (navigation) => {
   const navParams = navigation.state.params || {};
   const theme = navParams.theme || {};
+
   const defaultHeaderStyles = {
     headerStyle: {
       backgroundColor: theme.headerBackgroundColor,
     },
     headerTitleStyle: {
+      fontWeight: '200', // needed to keep Android happy - https://github.com/react-navigation/react-navigation/issues/1080
+      ...getFontStyle(`Default`),
+
       color: theme.headerTitleColor,
-      fontWeight: `bold`,
     },
     headerTintColor: theme.headerTitleColor,
   };
