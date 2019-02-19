@@ -2,30 +2,65 @@ import { Platform } from 'react-native';
 
 const fontMap = {
   Default: {
+    thin: {
+      android: {
+        fontFamily: `Manrope Thin`,
+      },
+      ios: {
+        fontFamily: `Manrope`,
+        fontWeight: `300`,
+      },
+    },
+    light: {
+      android: {
+        fontFamily: `Manrope Light`,
+      },
+      ios: {
+        fontFamily: `Manrope`,
+        fontWeight: `300`,
+      },
+    },
     regular: {
       android: {
         fontFamily: `Manrope Regular`,
       },
       ios: {
-        fontFamily: `Manrope Regular`,
+        fontFamily: `Manrope`,
+      },
+    },
+    medium: {
+      android: {
+        fontFamily: `Manrope Medium`,
+      },
+      ios: {
+        fontFamily: `Manrope`,
+      },
+    },
+    semibold: {
+      android: {
+        fontFamily: `Manrope Semibold`,
+      },
+      ios: {
+        fontFamily: `Manrope`,
+        fontWeight: `bold`,
       },
     },
     bold: {
       android: {
-        fontFamily: `MontserratBold`,
+        fontFamily: `Manrope Bold`,
       },
       ios: {
-        fontFamily: `Montserrat`,
+        fontFamily: `Manrope`,
         fontWeight: `bold`,
       },
     },
-    light: {
+    extrabold: {
       android: {
-        fontFamily: `MontserratLight`,
+        fontFamily: `Manrope ExtraBold`,
       },
       ios: {
-        fontFamily: `Montserrat`,
-        fontWeight: `300`,
+        fontFamily: `Manrope`,
+        fontWeight: `bold`,
       },
     },
   },
