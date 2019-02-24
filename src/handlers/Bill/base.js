@@ -47,5 +47,13 @@ export const {
         },
       },
     },
+    RESET: {
+      ALL: {
+        action: [],
+        reducer: {
+          reset: true,
+        },
+      },
+    },
   },
 });

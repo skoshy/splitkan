@@ -49,6 +49,11 @@ const ThisComponent = ({ navigation, $state, $actions }) => {
       >
         <ButtonText>Create bill</ButtonText>
       </Button>
+      <Button
+        onPress={() => $actions.BILL.resetAll()}
+      >
+        <ButtonText>Reset bills</ButtonText>
+      </Button>
       <Header1>My Bills</Header1>
       {bills}
     </BackgroundView>
