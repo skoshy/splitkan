@@ -10,9 +10,17 @@ export const {
   nameSpace: `BILL`,
   initialState: {
     bills: [],
-    currentBill: {},
+    currentBillLocalId: ``,
   },
   types: {
+    SET: {
+      CURRENT_BILL: {
+        action: [`currentBillLocalId`],
+        reducer: {
+          reduce: [`currentBillLocalId`],
+        },
+      },
+    },
     CREATE: {
       BILL: {
         action: [],

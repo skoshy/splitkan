@@ -20,6 +20,28 @@ import { stateMapper, actionsMapper, nameSpaces } from '../handlers';
 import { getFontStyle } from '../helpers/font';
 
 const ThisComponent = ({ navigation, $state, $actions }) => {
+  const selectBill = (billLocalId) => {
+    
+  };
+
+  const bills = $state.bills.map((bill) => (
+    <Button
+      key={bill.LocalId}
+      onPress={() => {
+        $actions.BILL.setCurrentBill(bill.LocalId);
+      }}
+    >
+      <ButtonText
+        style={{
+          
+        }}
+      >
+        {bill.Name}
+        {$state.getCurrentBill ? $state.getCurrentBill.LocalId === bill.LocalId ? `Selected` : `` : ``}
+      </ButtonText>
+    </Button>
+  ));
+
   return (
     <BackgroundView>
       <Button
@@ -28,13 +50,7 @@ const ThisComponent = ({ navigation, $state, $actions }) => {
         <ButtonText>Create bill</ButtonText>
       </Button>
       <Header1>My Bills</Header1>
-      {$state.bills.map((bill) => (
-        <BodyText
-          key={bill.LocalId}
-        >
-          {bill.Name}
-        </BodyText>
-      ))}
+      {bills}
     </BackgroundView>
   );
 };
@@ -44,6 +60,7 @@ export default connect(
   stateMapper({
     theme: [nameSpaces.APP],
     bills: [nameSpaces.BILL],
+    getCurrentBill: [nameSpaces.BILL],
   }),
 
   // actions -> maps to this.props.$actions.{HANDLER_NAME}
