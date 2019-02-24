@@ -6,28 +6,19 @@ export const {
   actions,
   reducer,
 } = createHandler({
-  nameSpace: `COMMUNITY`,
+  nameSpace: `BILL`,
   initialState: {
-    id: 0,
-    name: ``,
-    posts: [],
+    bills: [],
+    currentBill: {},
   },
   types: {
-    SET: {
-      COMMUNITY: {
-        action: [`id`, `name`],
-        reducer: {
-          reduce: [`id`, `name`],
-        },
-      },
-    },
     FETCH: {
-      COMMUNITY: {
+      BILLS: {
         action: [],
 
         SUCCESS: {
-          action: [`posts`],
-          reducer: [`posts`],
+          action: [`bills`],
+          reducer: [`bills`],
         },
 
         FAILURE: {

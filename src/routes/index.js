@@ -8,7 +8,6 @@ import { withNavigationRedux } from './withNavigationRedux';
 import CustomDrawerContentComponent from './CustomDrawerContent';
 import HomeScreen from '../screens/HomeScreen';
 import SplitScreen from '../screens/SplitScreen';
-import PostScreen from '../screens/PostScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import {
   defaultNavigatorOptions,

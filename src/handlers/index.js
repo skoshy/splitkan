@@ -2,14 +2,12 @@ import { combineReducers } from 'redux';
 import { connect } from 'react-redux';
 import { setupDusk, getPartFromHandlers } from 'redux-dusk';
 import * as App from './App';
-import * as Community from './Community';
-import * as CommunityList from './CommunityList';
+import * as Bill from './Bill';
 
-export const handlers = {
-  [App.nameSpace]: App,
-  [Community.nameSpace]: Community,
-  [CommunityList.nameSpace]: CommunityList,
-};
+export const handlers = [
+  App,
+  Bill,
+];
 
 export const {
   nameSpaces,

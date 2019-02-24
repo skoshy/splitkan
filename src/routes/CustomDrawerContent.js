@@ -27,28 +27,12 @@ const CustomDrawerContentComponent = (props) => {
 
   const communityListItems = [];
 
-  $state.communities.forEach((community) => {
-    communityListItems.push((
-      <Button
-        key={community.id}
-        onPress={() => {
-          $actions.COMMUNITY.setCommunity(community.id, community.name);
-          $actions.COMMUNITY.fetchCommunity();
-          navigation.closeDrawer();
-        }}
-      >
-        <ButtonText>{community.name}</ButtonText>
-      </Button>
-    ));
-  });
-
   return (
     <ScrollView style={styles.scrollView}>
       <SafeAreaView style={styles.container} forceInset={{ top: `always`, horizontal: `never` }}>
         { communityListItems }
         <Button
           style={{ marginTop: 20 }}
-          onPress={() => $actions.COMMUNITY_LIST.fetchCommunityList()}
         >
           <ButtonText>Fetch Community Lists</ButtonText>
         </Button>
@@ -67,11 +51,10 @@ export default withTheme(connect(
   // variables from the store -> maps to this.props.$state
   stateMapper({
     theme: [nameSpaces.APP],
-    communities: [nameSpaces.COMMUNITY_LIST],
   }),
 
   // actions -> maps to this.props.$actions.{HANDLER_NAME}
   actionsMapper([
-    nameSpaces.APP, nameSpaces.COMMUNITY_LIST, nameSpaces.COMMUNITY,
+    nameSpaces.APP,
   ]),
 )(CustomDrawerContentComponent));

@@ -109,7 +109,6 @@ export default connect(
   // variables from the store -> maps to this.props.$state
   stateMapper({
     theme: [nameSpaces.APP],
-    posts: [nameSpaces.COMMUNITY],
   }),
 
   // actions -> maps to this.props.$actions.{HANDLER_NAME}
