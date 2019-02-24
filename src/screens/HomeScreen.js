@@ -15,16 +15,26 @@ import {
 import { connect } from 'react-redux';
 import { BackgroundView } from '../components/Core/Containers';
 import { Header1, BodyText } from '../components/Core/Text';
+import { Button, ButtonText } from '../components/Button';
 import { stateMapper, actionsMapper, nameSpaces } from '../handlers';
 import { getFontStyle } from '../helpers/font';
 
-const ThisComponent = ({ navigation, $state }) => {
+const ThisComponent = ({ navigation, $state, $actions }) => {
   return (
     <BackgroundView>
-      <Header1>Test</Header1>
-      <BodyText>
-        This is the body of my stuff
-      </BodyText>
+      <Button
+        onPress={() => $actions.BILL.createBill()}
+      >
+        <ButtonText>Create bill</ButtonText>
+      </Button>
+      <Header1>My Bills</Header1>
+      {$state.bills.map((bill) => (
+        <BodyText
+          key={bill.LocalId}
+        >
+          {bill.Name}
+        </BodyText>
+      ))}
     </BackgroundView>
   );
 };
@@ -33,10 +43,12 @@ export default connect(
   // variables from the store -> maps to this.props.$state
   stateMapper({
     theme: [nameSpaces.APP],
+    bills: [nameSpaces.BILL],
   }),
 
   // actions -> maps to this.props.$actions.{HANDLER_NAME}
   actionsMapper([
     nameSpaces.APP,
+    nameSpaces.BILL,
   ]),
 )(ThisComponent);

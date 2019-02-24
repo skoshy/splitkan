@@ -1,4 +1,5 @@
 import { createHandler } from 'redux-dusk';
+import Bill from '../../entities/Bill';
 
 export const {
   nameSpace,
@@ -12,6 +13,18 @@ export const {
     currentBill: {},
   },
   types: {
+    CREATE: {
+      BILL: {
+        action: [],
+        reducer: (spaceState, action) => {
+          const bills = spaceState.bills.slice(0);
+          bills.push(Bill());
+          console.log(`new bills`, bills);
+
+          return { ...spaceState, bills };
+        },
+      },
+    },
     FETCH: {
       BILLS: {
         action: [],
