@@ -33,12 +33,14 @@ class ThisComponent extends React.Component {
   }
 
   addItem = () => {
+    const { $actions } = this.props;
     const { items } = this.state;
     items.push({
       id: Math.random()+Date.now(),
       name: 'New ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew Item',
     });
     this.setState({ items });
+    $actions.BILL.createItem();
   }
 
   renderItems = () => {
@@ -109,10 +111,12 @@ export default connect(
   // variables from the store -> maps to this.props.$state
   stateMapper({
     theme: [nameSpaces.APP],
+    getCurrentBill: [nameSpaces.BILL],
   }),
 
   // actions -> maps to this.props.$actions.{HANDLER_NAME}
   actionsMapper([
     nameSpaces.APP,
+    nameSpaces.BILL,
   ]),
 )(ThisComponent);

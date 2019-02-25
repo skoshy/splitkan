@@ -1,13 +1,15 @@
 import { createHandler } from 'redux-dusk';
+import { selectors } from './selectors';
 import Bill from '../../entities/Bill';
 
+export const nameSpace = `BILL`;
+
 export const {
-  nameSpace,
   types,
   actions,
   reducer,
 } = createHandler({
-  nameSpace: `BILL`,
+  nameSpace,
   initialState: {
     bills: [],
     currentBillLocalId: ``,
@@ -22,6 +24,13 @@ export const {
       },
     },
     CREATE: {
+      ITEM: {
+        action: [],
+        reducer: (spaceState, action) => {
+          const currentBill = selectors.getCurrentBill({ [nameSpace]: spaceState });
+          console.log(currentBill);
+        },
+      },
       BILL: {
         action: [],
         reducer: (spaceState, action) => {

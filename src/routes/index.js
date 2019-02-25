@@ -42,30 +42,6 @@ const SplitStack = createMaterialTopTabNavigator(
         };
       },
     },
-    SplitScreen2: {
-      screen: withNavigationRedux(SplitScreen),
-      navigationOptions: ({ navigation }) => {
-        const { theme } = getNavOptionsVars(navigation);
-
-        return {
-          title: `Home`,
-          headerLeft: (
-            <HeaderButton
-              theme={theme}
-              onPress={() => { navigation.openDrawer(); }}
-              icon="bars"
-            />
-          ),
-          headerRight: (
-            <HeaderButton
-              theme={theme}
-              onPress={() => { navigation.navigate(`SettingsScreen`); }}
-              icon="cog"
-            />
-          ),
-        };
-      },
-    },
   },
   {
     ...defaultNavigatorOptions,
@@ -89,21 +65,19 @@ export const Stack = createStackNavigator(
         const { theme, defaultHeaderStyles } = getNavOptionsVars(navigation);
 
         return {
-          title: `Post`,
-          // headerTitle: ({ children }) => (
-          //   <BodyText>
-          //     {children}
-          //   </BodyText>
-          // ),
+          title: `Home`,
           headerLeft: (
             <HeaderButton
               theme={theme}
-              onPress={() => { navigation.goBack(); }}
-              icon="arrow-left"
+              onPress={() => { navigation.openDrawer(); }}
+              icon="bars"
             />
           ),
         };
       },
+    },
+    SplitStack: {
+      screen: SplitStack,
     },
   },
   {

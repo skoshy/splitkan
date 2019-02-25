@@ -29,6 +29,7 @@ const ThisComponent = ({ navigation, $state, $actions }) => {
       key={bill.LocalId}
       onPress={() => {
         $actions.BILL.setCurrentBill(bill.LocalId);
+        navigation.navigate(`SplitStack`);
       }}
     >
       <ButtonText
