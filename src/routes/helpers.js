@@ -13,7 +13,14 @@ export const defaultNavigatorOptions = {
 };
 export const getNavOptionsVars = (navigation) => {
   const navParams = navigation.state.params || {};
-  const theme = navParams.theme || {};
+  const theme = (
+    navParams.theme
+    || (
+      navigation.state.routes && navigation.state.routes[0] && navigation.state.routes[0].params && navigation.state.routes[0].params.theme
+        ? navigation.state.routes[0].params.theme
+        : {}
+    )
+  );
 
   const defaultHeaderStyles = {
     headerStyle: {
