@@ -47,8 +47,8 @@ export const {
         action: [],
 
         SUCCESS: {
-          action: [`bills`],
-          reducer: [`bills`],
+          action: [],
+          reducer: [],
         },
 
         FAILURE: {

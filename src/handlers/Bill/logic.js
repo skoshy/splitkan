@@ -11,7 +11,8 @@ export const logic = [
     process({ getState }, dispatch, done) {
       // here is where we would do a network request with axios, just supplying static data now
 
-      dispatch(actions.fetchBillsSuccess());
+      const dispatchReturn = dispatch(actions.fetchBillsSuccess());
+      console.log(dispatchReturn);
       done();
     },
   }),

@@ -46,6 +46,11 @@ const ThisComponent = ({ navigation, $state, $actions }) => {
   return (
     <BackgroundView>
       <Button
+        onPress={() => $actions.BILL.fetchBills()}
+      >
+        <ButtonText>Fetch Bills</ButtonText>
+      </Button>
+      <Button
         onPress={() => $actions.BILL.createBill()}
       >
         <ButtonText>Create bill</ButtonText>
