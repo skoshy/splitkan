@@ -4,11 +4,18 @@ IOS_DIR			= ./ios
 PORT        = 50300
 
 clean:
+	# killall Xcode
+	xcrun -k
+	# xcodebuild -alltargets clean
+	rm -rf "$(getconf DARWIN_USER_CACHE_DIR)/org.llvm.clang/ModuleCache"
+	rm -rf "$(getconf DARWIN_USER_CACHE_DIR)/org.llvm.clang.$(whoami)/ModuleCache"
+	rm -rf ~/Library/Developer/Xcode/DerivedData/*
+	rm -rf ~/Library/Caches/com.apple.dt.Xcode/*
 	rm -rf $(IOS_DIR)/build $(ANDROID_DIR)/build
 	rm -rf $(TMPDIR)/react-*
 	rm -rf $(TMPDIR)/metro-bundler-cache-*
 	rm -rf $(TMPDIR)/haste-map-react-native-packager-*
-	watchman watch-del-all
+	# watchman watch-del-all
 
 reset-pods:
 	cd $(IOS_DIR) && \
