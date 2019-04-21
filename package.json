@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "task": "node ./tasks",
     "start": "node ./scripts/run.js",
     "react-native-cli": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
@@ -13,7 +14,7 @@
     "jsc-android": "236355.1.1",
     "minimist": "^1.2.0",
     "react": "^16.7.0",
-    "react-native": "^0.57.8",
+    "react-native": "^0.59.6",
     "react-native-extended-stylesheet": "^0.11.1",
     "react-native-vector-icons": "^6.1.0",
     "react-navigation": "^2.18.3",
@@ -38,10 +39,13 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.12.0",
     "eslint-plugin-react-native": "^3.5.0",
+    "fb-watchman": "^2.0.0",
+    "fsevents": "^2.0.6",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.51.1",
     "react-native-cli": "^2.0.1",
-    "react-test-renderer": "16.7.0"
+    "react-test-renderer": "16.7.0",
+    "tasksfile": "^5.0.1"
   },
   "jest": {
     "preset": "react-native"
