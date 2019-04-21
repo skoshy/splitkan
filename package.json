@@ -1,20 +1,19 @@
 {
   "name": "Splitkan",
-  "version": "0.0.1",
   "private": true,
   "scripts": {
     "task": "node ./tasks",
     "start": "node ./scripts/run.js",
     "react-native-cli": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "upgrade": "react-native upgrade"
   },
   "dependencies": {
     "cross-spawn": "^6.0.5",
-    "jsc-android": "236355.1.1",
     "minimist": "^1.2.0",
-    "react": "^16.7.0",
-    "react-native": "^0.59.6",
+    "react": "16.8.3",
+    "react-native": "0.59.4",
     "react-native-extended-stylesheet": "^0.11.1",
     "react-native-vector-icons": "^6.1.0",
     "react-navigation": "^2.18.3",
