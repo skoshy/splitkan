@@ -1,4 +1,4 @@
-package com.skoshy.splitkan;
+package com.splitkan;
 
 import com.facebook.react.ReactActivity;
 
