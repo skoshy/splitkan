@@ -27,6 +27,10 @@ class ThisComponent extends React.Component {
     super(props);
 
     this.state = {
+      item_to_payer: {},
+      payer_to_item: {},
+      item_payer_data: {},
+
       items: [],
       payers: [],
     };
@@ -36,26 +40,59 @@ class ThisComponent extends React.Component {
     const { $actions } = this.props;
     const { items } = this.state;
     items.push({
-      id: Math.random()+Date.now(),
+      id: 'I-'+Math.random()+Date.now(),
       name: 'New ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew ItemNew Item',
     });
     this.setState({ items });
     $actions.BILL.createItem();
   }
 
+  addPayer = () => {
+    const { $actions } = this.props;
+    const { payers } = this.state;
+    payers.push({
+      id: 'P-'+Math.random() + Date.now(),
+      name: 'Person',
+    });
+    this.setState({ payers });
+  }
+
+  addPayerToItem = (payer, item) => {
+    const { item_to_payer, payer_to_item } = this.state;
+    payer_to_item[payer.id] = payer_to_item[payer.id] || [];
+    item_to_payer[item.id] = item_to_payer[item.id] || [];
+
+    // TODO: get the key from the array if it's there
+    let key = 'DATA-' + Math.random() + Date.now();
+    payer_to_item[payer.id] = key;
+    item_to_payer[item.id];
+  }
+
   renderItems = () => {
-    const { items } = this.state;
+    const { items, payers } = this.state;
     const itemsJsx = [];
 
     items.forEach((item) => {
+      const addPayerButtons = payers.map((payer) => {
+        return (
+          <Button onPress={() => this.addPayerToItem(payer, item)}>
+            <ButtonText>
+              {`Add Payer (${payer.name})`}
+            </ButtonText>
+          </Button>
+        );
+      });
+
       itemsJsx.push((
         <View
           key={item.id}
           style={{
-
+            backgroundColor: `white`,
+            flex: 1,
           }}
         >
           <Text>{item.name}</Text>
+          {addPayerButtons}
         </View>
       ));
     });
@@ -69,6 +106,7 @@ class ThisComponent extends React.Component {
         <View style={{ flex: 1 }}>
           <ScrollView
             contentContainerStyle={{
+              flex: 1,
             }}
             style={{
               flex: 1,
@@ -80,6 +118,7 @@ class ThisComponent extends React.Component {
               directionalLockEnabled={false}
               contentContainerStyle={{
                 flexDirection: 'column',
+                flex: 1,
               }}
               style={{
                 flex: 1,
@@ -88,6 +127,9 @@ class ThisComponent extends React.Component {
             >
               <Button onPress={this.addItem}>
                 <ButtonText>Insert item</ButtonText>
+              </Button>
+              <Button onPress={this.addPayer}>
+                <ButtonText>Insert payer</ButtonText>
               </Button>
               <Text
                 style={{

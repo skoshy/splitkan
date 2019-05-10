@@ -28,7 +28,6 @@ export const {
         action: [],
         reducer: (spaceState, action) => {
           const currentBill = selectors.getCurrentBill({ [nameSpace]: spaceState });
-          console.log(currentBill);
         },
       },
       BILL: {
@@ -36,7 +35,6 @@ export const {
         reducer: (spaceState, action) => {
           const bills = spaceState.bills.slice(0);
           bills.push(Bill());
-          console.log(`new bills`, bills);
 
           return { ...spaceState, bills };
         },

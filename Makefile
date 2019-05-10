@@ -37,8 +37,9 @@ server:
 server-and-reset-cache:
 	npx react-native start --reset-cache
 
+# add --scheme "Blah" to specify a scheme
 run-ios:
-	npx react-native run-ios --scheme "Dev"
+	npx react-native run-ios --port=${PORT}
 
 run-android:
 	npx react-native run-android

@@ -12,24 +12,11 @@ selectors.getCurrentBill = createSelector(
   // selectors to use
   selectors.getBills,
   selectors.getCurrentBillLocalId,
+
   // reselect selector
-  (bills, currentBillLocalId) => {
-    let currentBill = false;
-
-
-    bills.every((bill) => {
-      if (bill.LocalId === currentBillLocalId) {
-        currentBill = bill;
-        return false;
-      }
-
-      return true;
-    });
-
-    console.log('in selector', bills, currentBill, currentBillLocalId);
-
-    return currentBill;
-  },
+  (bills, currentBillLocalId) => (
+    bills.find(bill => bill.LocalId === currentBillLocalId)
+  ),
 );
 
 export { selectors };
