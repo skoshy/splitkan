@@ -31,21 +31,6 @@ reset-npm-packages:
 
 clean-and-reset-all: clean reset-npm-packages reset-pods
 
-server:
-	@react-native start --port=${PORT}
-
-server-and-reset-cache:
-	npx react-native start --reset-cache
-
-# add --scheme "Blah" to specify a scheme
-run-ios:
-	npx react-native run-ios --port=${PORT}
-
-run-android:
-	npx react-native run-android
-
-run-all: run-ios run-android
-
 lint: 
 	npx tslint --project tsconfig.json *.ts src/**/*.{ts,tsx} src/**/**/*.{ts,tsx} --exclude .hygen.js
 
