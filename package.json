@@ -4,18 +4,13 @@
   "private": true,
   "scripts": {
     "task": "node ./tasks",
-    "start": "node ./scripts/run.js",
-    "start-default": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "start": "webpack-dev-server"
   },
   "dependencies": {
     "cross-spawn": "^6.0.5",
     "minimist": "^1.2.0",
     "react": "16.8.3",
-    "react-native": "0.59.5",
-    "react-native-extended-stylesheet": "^0.11.1",
-    "react-native-vector-icons": "^6.1.0",
-    "react-navigation": "^2.18.3",
+    "react-dom": "^16.8.6",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.7",
@@ -26,32 +21,17 @@
     "styled-components": "^4.1.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/runtime": "^7.4.3",
-    "@commitlint/cli": "^7.5.2",
-    "@commitlint/config-conventional": "^7.5.0",
-    "babel-jest": "^24.7.1",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.10.0",
-    "fb-watchman": "^2.0.0",
-    "fsevents": "^2.0.6",
-    "husky": "^2.1.0",
-    "jest": "^24.7.1",
-    "metro-react-native-babel-preset": "^0.53.1",
-    "react-test-renderer": "16.8.3",
-    "tasksfile": "^5.0.1"
-  },
-  "jest": {
-    "preset": "react-native"
-  },
-  "rnpm": {
-    "assets": [
-      "./assets/fonts"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "tasksfile": "^5.0.1",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
   },
   "defaultDebugPort": "50300"
 }
